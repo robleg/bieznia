@@ -231,59 +231,82 @@ body.adv-open .fab{visibility:hidden}
 
 /* ---------- modal ---------- */
 .ov{position:fixed;inset:0;z-index:60;background:var(--scrim);display:grid;place-items:center;padding:max(16px,env(safe-area-inset-top,0px)) var(--gut-r) max(16px,env(safe-area-inset-bottom,0px)) var(--gut-l)}
-.dlg{background:var(--bg);border-radius:var(--r-l);width:min(1000px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto;overscroll-behavior:contain;box-shadow:var(--sh-3);display:flex;flex-direction:column}
+.dlg{background:var(--bg);border-radius:var(--r-l);width:min(920px,100%);max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));overflow:auto;overscroll-behavior:contain;box-shadow:var(--sh-3);display:flex;flex-direction:column}
 @media (max-width:699px){
-  .ov{place-items:end stretch;padding:max(24px,env(safe-area-inset-top,0px)) 0 0}
-  .dlg{width:100%;border-radius:18px 18px 0 0;max-height:calc(100dvh - max(24px,env(safe-area-inset-top,0px)));padding-bottom:env(safe-area-inset-bottom,0px)}
+  .ov{place-items:stretch;padding:env(safe-area-inset-top,0px) 0 0}
+  .dlg{width:100%;height:100%;max-height:none;border-radius:0;padding-bottom:env(safe-area-inset-bottom,0px)}
 }
-.dlg-h{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;align-items:flex-start;gap:12px;padding:16px 20px 14px;border-bottom:1px solid var(--line)}
-.dlg-h .ttl{flex:1;min-width:0;display:grid;gap:4px}
-.dlg-h h2{font-size:var(--t-xl);font-weight:800;line-height:1.15;letter-spacing:-.02em}
-.x{flex:0 0 auto;width:44px;height:44px;border-radius:999px;background:var(--surface);display:grid;place-items:center}
-.x:hover{background:var(--surface-2)}
+.dlg-h{position:sticky;top:0;z-index:2;background:var(--bg);display:flex;align-items:center;gap:12px;padding:6px 8px 6px 20px;border-bottom:1px solid var(--line)}
+.dlg-h .ttl{flex:1;min-width:0;display:grid;gap:2px}
+.dlg-h h2{font-size:var(--t-m);font-weight:700;line-height:1.3;letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.x{flex:0 0 auto;width:44px;height:44px;border-radius:999px;background:transparent;display:grid;place-items:center}
+.x:hover{background:var(--surface)}
 .x svg{width:18px;height:18px}
-.dlg-b{padding:20px;display:grid;gap:28px}
-@media (max-width:699px){.dlg-h{padding:14px 16px 12px}.dlg-b{padding:16px;gap:24px}}
-.two{display:grid;grid-template-columns:minmax(0,1fr);gap:24px}
-@media (min-width:760px){.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}}
+.dlg-b{padding:18px 20px 22px;display:grid;gap:26px}
+@media (max-width:699px){.dlg-h{padding:4px 4px 4px 16px}.dlg-b{padding:14px 16px 22px;gap:22px}}
 .sect{display:grid;gap:10px;align-content:start;min-width:0}
 .sect h3{font-size:var(--t-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
-.hero-img{aspect-ratio:4/3;max-width:100%;background:var(--surface);border-radius:var(--r);display:grid;place-items:center;overflow:hidden}
-.hero-img img{width:100%;height:100%;object-fit:contain;padding:18px;mix-blend-mode:multiply}
-.hero-img svg{width:70%}
-@media (max-width:699px){.hero-img{aspect-ratio:16/10}}
-.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
-.shots a{flex:0 0 auto;width:148px;display:grid;gap:5px;font-size:var(--t-xs);color:var(--ink-2);text-decoration:none}
-.shots img{width:148px;height:100px;object-fit:cover;object-position:top;border-radius:var(--r-s);box-shadow:inset 0 0 0 1px var(--line);border:1px solid var(--line);background:var(--bg)}
-.shots a:hover img{border-color:var(--ink)}
-.bigprice{display:grid;gap:4px}
-.bigprice .pv{font-size:var(--t-xxl)}
-.acts{display:flex;flex-wrap:wrap;gap:8px}
-.acts .btn{flex:1 1 160px}
-.kv{display:grid;font-size:var(--t-m)}
-.kv>div{display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding-block:8px;border-bottom:1px solid var(--line);min-width:0}
-.kv .l{color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;min-width:0}
-.kv .v{text-align:right;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.kv .miss{color:var(--ink-3);font-style:italic;font-weight:400}
-.kv .fail{color:var(--bad)}
-.info{flex:0 0 auto;width:18px;height:18px;border-radius:999px;border:1.3px solid var(--line-2);color:var(--ink-3);font-size:10px;font-weight:700;display:inline-grid;place-items:center;font-family:var(--mono);cursor:help;font-style:normal}
-.brk{display:grid;gap:12px}
-.brk .r{display:grid;grid-template-columns:minmax(110px,150px) minmax(0,1fr) auto;gap:4px 12px;align-items:center;font-size:var(--t-s)}
-.brk .r>span:first-child{font-weight:600}
-.brk .bar{height:8px;background:var(--surface);border-radius:4px;overflow:hidden}
-.brk .bar i{display:block;height:100%;background:var(--ok);border-radius:4px}
-.brk .bar i.mid{background:var(--warn)}.brk .bar i.bad{background:var(--bad)}.brk .bar i.unk{background:var(--unk)}
-.brk .exp{grid-column:1/-1;font-size:var(--t-xs);color:var(--ink-3);line-height:1.4}
-.scorehead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.scorehead .big{font-size:var(--t-xxl);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
-.scorehead .big small{font-size:var(--t-m);color:var(--ink-3);font-weight:600}
-.failbox{background:var(--bad-bg);color:var(--ink);border-radius:var(--r-s);padding:10px 12px;font-size:var(--t-s)}
-.failbox b{color:var(--bad)}
-.links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:var(--t-s);color:var(--ink-2)}
-.links a{color:var(--ink);font-weight:600;text-underline-offset:3px}
-.links .mono{color:var(--ink)}
-.notes{font-size:var(--t-s);color:var(--ink-3)}
 .muted{color:var(--ink-3);font-size:var(--t-s)}
+.info{flex:0 0 auto;width:16px;height:16px;border-radius:999px;border:1.3px solid var(--line-2);color:var(--ink-3);font-size:10px;font-weight:700;display:inline-grid;place-items:center;font-family:var(--mono);cursor:help;font-style:normal}
+.info:hover,.info.tip-on{color:var(--ink);border-color:var(--ink)}
+.shots{display:flex;gap:10px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.shots a{flex:0 0 auto;width:132px;display:grid;gap:4px;font-size:var(--t-xs);color:var(--ink-2);text-decoration:none}
+.shots img{width:132px;height:88px;object-fit:cover;object-position:top;border-radius:var(--r-s);border:1px solid var(--line);background:var(--bg)}
+.shots a:hover img{border-color:var(--ink)}
+/* detail: hero */
+.dm-hero{display:grid;grid-template-columns:minmax(0,1fr);gap:16px 28px}
+@media (min-width:700px){.dm-hero{grid-template-columns:minmax(0,40%) minmax(0,1fr);align-items:start}}
+.dm-img{aspect-ratio:1/1;background:var(--surface);border-radius:var(--r);display:grid;place-items:center;overflow:hidden}
+.dm-img img{width:100%;height:100%;object-fit:contain;padding:16px;mix-blend-mode:multiply}
+.dm-img svg{width:74%;height:auto}
+@media (max-width:699px){.dm-img{aspect-ratio:auto;height:190px}}
+.dm-info{display:grid;gap:12px;align-content:start;min-width:0}
+.dm-name{font-size:var(--t-xl);font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.dm-price{display:grid;gap:3px}
+.dm-price .pv{font-size:var(--t-xxl)}
+.dm-pline{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:var(--t-s);color:var(--ink-2)}
+.dm-pline .free{color:var(--ok);font-weight:600}
+.dm-omni{display:inline-flex;align-items:center;gap:6px;font-size:var(--t-xs);color:var(--ink-3)}
+.dm-delta{font-size:var(--t-xs);font-weight:700;border-radius:999px;padding:2px 9px;font-variant-numeric:tabular-nums}
+.dm-delta.down{background:var(--ok-bg);color:var(--ok)}
+.dm-delta.up{background:var(--bad-bg);color:var(--bad)}
+.dm-acts{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:8px}
+.dm-fav svg{fill:none;stroke:currentColor;stroke-width:1.8}
+.dm-fav[aria-pressed="true"]{color:var(--brand);box-shadow:inset 0 0 0 1.5px var(--brand)}
+.dm-fav[aria-pressed="true"] svg{fill:currentColor}
+.dm-verdict{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;padding-top:12px;border-top:1px solid var(--line)}
+.dm-score{font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.dm-score small{font-family:var(--mono);font-size:var(--t-s);font-weight:500;color:var(--ink-3);letter-spacing:0;margin-left:2px}
+.dm-score.out{color:var(--bad);font-size:30px;letter-spacing:-.02em}
+.dm-why{flex:1 1 200px;min-width:0;font-size:var(--t-s);color:var(--ink-2)}
+.dm-why b{color:var(--ink);font-weight:600}
+.dm-score.out+.dm-why b{color:var(--bad)}
+/* detail: kryteria 3x3 */
+.dm-crit{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+@media (min-width:600px){.dm-crit{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.dm-c{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:7px 8px;padding:9px 11px 11px;border-radius:var(--r-s);box-shadow:inset 0 0 0 1px var(--line);font-size:var(--t-s)}
+.dm-c:hover,.dm-c.tip-on{box-shadow:inset 0 0 0 1.5px var(--ink)}
+.dm-c .n{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.dm-c .v{font-family:var(--mono);font-size:var(--t-xs);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.dm-c .b{grid-column:1/-1;height:4px;border-radius:2px;background:var(--surface-2);overflow:hidden}
+.dm-c .b i{display:block;height:100%;border-radius:2px;background:var(--ok)}
+.dm-c .b i.mid{background:var(--warn)}
+.dm-c .b i.bad{background:var(--bad)}
+.dm-c.unk{background:var(--surface);box-shadow:none}
+.dm-c.unk .n,.dm-c.unk .v{color:var(--ink-3)}
+.dm-c.fail{background:var(--bad-bg);box-shadow:inset 0 0 0 1px var(--brand-line)}
+.dm-c.fail .v{color:var(--bad);font-weight:600}
+.dm-hint{font-size:var(--t-xs);color:var(--ink-3)}
+/* detail: specyfikacja */
+.dm-spec{margin:0;columns:2 260px;column-gap:36px}
+.dm-spec>div{break-inside:avoid;display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding-block:7px;border-bottom:1px solid var(--line);font-size:var(--t-s)}
+.dm-spec dt{color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;min-width:0}
+.dm-spec dd{margin:0;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.dm-spec .fail dt,.dm-spec .fail dd{color:var(--bad)}
+.dm-foot{display:flex;flex-wrap:wrap;gap:4px 16px;padding-top:14px;border-top:1px solid var(--line);font-size:var(--t-xs);color:var(--ink-3)}
+.dm-foot .mono{color:var(--ink-2)}
+.dm-foot a{color:var(--ink-2);font-weight:600;text-underline-offset:3px}
+.dm-foot .note{flex:1 1 100%;line-height:1.45}
 
 /* chart */
 .chart-host{min-height:200px;min-width:0}
@@ -427,7 +450,7 @@ const Q = [
    {v:"7000", b:"do 7000 zł", s:"", t:"Horizon, Kettler, lepsze Toorx: 2,5–3 KM, pas 145–150 cm, elektryczne nachylenie."},
    {v:"0", b:"Bez limitu", s:"", t:"Cena nie odrzuca niczego. Punkty za cenę liczone neutralnie."}]},
 ];
-const DEF = {use:"jog", user:"110", store:"wall", incline:"any", noise:"flat", app:"any", budget:"4500"};
+const DEF = {use:"run", user:"110", store:"wall", incline:"any", noise:"flat", app:"any", budget:"4500"};
 const W = {motor:18, dur:18, fold:18, belt:14, margin:10, noise:8, incline:6, app:4, value:4};
 const WN = {motor:"Silnik", dur:"Trwałość", fold:"Składanie", belt:"Pas", margin:"Zapas nośności", noise:"Hałas", incline:"Nachylenie", app:"Aplikacja", value:"Cena w budżecie"};
 const WE = {
@@ -728,53 +751,75 @@ function openModal(html, label){
   const x=$("modal").querySelector(".x"); if(x) x.focus({preventScroll:true});
 }
 function closeModal(){ $("modal").hidden=true; $("modal").innerHTML=""; if(!document.body.classList.contains("adv-open")) document.body.classList.remove("lock"); hideTip(); if(lastFocus&&lastFocus.isConnected) lastFocus.focus({preventScroll:true}); }
-function kv(label,val,unit,tip,fail){ const v = val==null?`<span class="v miss">brak danych</span>`:`<span class="v${fail?" fail":""}">${esc(val)}${unit||""}</span>`; return `<div><span class="l">${label}${tip?`<span class="info" data-tip="${esc(tip)}" data-tip-tap tabindex="0" role="button" aria-label="Wyjaśnienie: ${esc(label)}">i</span>`:""}</span>${v}</div>`; }
+function specRow(label,val,unit,tip,fail){ if(val==null) return ""; return `<div${fail?` class="fail"`:""}><dt>${label}${tip?`<span class="info" data-tip="${esc(tip)}" data-tip-tap tabindex="0" role="button" aria-label="Wyjaśnienie: ${esc(label)}">i</span>`:""}</dt><dd>${esc(val)}${unit||""}</dd></div>`; }
 function detailModal(id, keepScroll){
   const p=products[id]; if(!p) return; const s=p.specs||{}, ev=evaluate(p,ans), n=need(ans), yn=v=>v==null?null:v?"tak":"nie";
   const prevScroll = keepScroll ? ($("modal").querySelector(".dlg")?.scrollTop||0) : 0;
   const d=priceDelta(id), om=omnibus(p), isPin=pins.has(id);
-  const brk = Object.keys(W).map(k=>{const v=ev.parts[k]; const c=v==null?"unk":v>=.7?"":v>=.4?"mid":"bad"; return `<div class="r"><span>${WN[k]}</span><div class="bar"><i class="${c}" style="width:${Math.round((v??.5)*100)}%"></i></div><span class="num">${v==null?"?":Math.round(W[k]*v)} / ${W[k]}</span><p class="exp">${WE[k]}${v==null?" Brak danych: liczymy połowę.":""}</p></div>`;}).join("");
+  // werdykt: 1-2 najsłabsze lub odrzucające kryteria
+  const FK={chp:"motor",speed:"motor",belt:"belt",kg:"margin",fold:"fold",incl:"incline",app:"app",budget:"value"};
+  const failK=new Set(ev.fails.map(f=>FK[f.k]).filter(Boolean));
+  const pts=k=>Math.round(W[k]*ev.parts[k]);
+  const weak=Object.keys(W).filter(k=>ev.parts[k]!=null&&ev.parts[k]<.7).sort((a,b)=>ev.parts[a]-ev.parts[b]).slice(0,2);
+  const why = ev.fails.length
+    ? `<b>Odpada przez:</b> ${ev.fails.slice(0,2).map(f=>esc(f.t)).join("; ")}${ev.fails.length>2?` i ${ev.fails.length-2} więcej`:""}.`
+    : weak.length ? `<b>Najsłabiej:</b> ${weak.map(k=>`${WN[k].toLowerCase()} ${pts(k)}/${W[k]}`).join(", ")}.`
+    : ev.unknown.length ? `Bez słabych punktów. Brak danych: ${esc(ev.unknown.slice(0,2).join(", "))}.` : "Bez słabych punktów.";
+  const crit = Object.keys(W).map(k=>{const v=ev.parts[k], f=failK.has(k), c=v==null?"":(f||v<.4)?"bad":v>=.7?"":"mid";
+    const tip=`<b>${WN[k]}</b>: ${v==null?`brak danych, liczymy połowę (${W[k]/2} pkt)`:`${pts(k)} / ${W[k]} pkt`}<br>${WE[k]}`;
+    return `<div class="dm-c${v==null?" unk":""}${f?" fail":""}" data-tip="${esc(tip)}" data-tip-tap tabindex="0"><span class="n">${WN[k]}</span><span class="v">${v==null?"?":pts(k)}/${W[k]}</span><span class="b" aria-hidden="true">${v==null?"":`<i class="${c}" style="width:${Math.round(v*100)}%"></i>`}</span></div>`;}).join("");
   const shots = ptsOf(id).filter(x=>x.shot_asset);
-  const gallery = shots.length ? `<div class="shots">${shots.slice().reverse().map(x=>`<a href="${esc(imgUrl(x.shot_asset))}" target="_blank" rel="noopener"><img src="${esc(imgUrl(x.shot_asset))}" alt="Zrzut strony oferty z ${esc(plDate(x.ts))}" loading="lazy"><span class="num">${esc(plDate(x.ts))}.${esc(String(x.ts).slice(0,4))} · ${pln(x.total??x.price)}</span></a>`).join("")}</div>` : `<p class="muted">Brak zrzutów strony. Crawl zapisuje zrzut, gdy sklep go nie blokuje.</p>`;
+  const gallery = shots.length ? `<div class="shots">${shots.slice().reverse().map(x=>`<a href="${esc(imgUrl(x.shot_asset))}" target="_blank" rel="noopener"><img src="${esc(imgUrl(x.shot_asset))}" alt="Zrzut strony oferty z ${esc(plDate(x.ts))}" loading="lazy"><span class="num">${esc(plDate(x.ts))}.${esc(String(x.ts).slice(0,4))} · ${pln(x.total??x.price)}</span></a>`).join("")}</div>` : `<p class="muted">Brak zrzutów strony oferty.</p>`;
   const deliv = p.delivery_pln===0?`<span class="free">dostawa gratis</span>`:p.delivery_pln==null?"dostawa nieznana":"w tym dostawa "+pln(p.delivery_pln);
-  openModal(`<div class="dlg-h"><div class="ttl"><div class="eyebrow"><span class="shopn">${esc(shopName(p.shop))}</span>${p.brand?`<span aria-hidden="true">·</span><span>${esc(p.brand)}</span>`:""}${p.available===false?`<span aria-hidden="true">·</span><span class="na">niedostępna</span>`:""}</div><h2>${esc(p.name)}</h2></div><button class="x" data-close="1" aria-label="Zamknij">${ICON.x}</button></div>
+  const foldTxt = ev.fc==="flat"?"płasko, pod łóżko":ev.fc==="low"?"nisko, na podłodze":ev.fc==="vertical"?"pionowo, pod ścianę":null;
+  const spec = [
+    specRow("Moc ciągła", s.motor_chp, " KM", SPEC_TIP.chp, s.motor_chp!=null&&s.motor_chp<n.chp),
+    specRow("Moc szczytowa", s.motor_peak_hp, " KM"),
+    specRow("Moc podana w W", s.motor_w, " W"),
+    specRow("Max prędkość", s.max_speed_kmh, " km/h", SPEC_TIP.speed, s.max_speed_kmh!=null&&s.max_speed_kmh<n.speed),
+    specRow("Pas", s.belt_l_cm!=null?`${s.belt_l_cm} × ${s.belt_w_cm??"?"}`:null, " cm", SPEC_TIP.belt, s.belt_l_cm!=null&&s.belt_l_cm<n.belt),
+    specRow("Nachylenie", s.incline==="electric"?"elektryczne"+(s.incline_max_pct?" do "+s.incline_max_pct+"%":""):s.incline==="manual"?"ręczne":s.incline==="none"?"brak":null, "", SPEC_TIP.incl, (ans.incline==="electric"&&s.incline&&s.incline!=="electric")||(ans.incline==="manual"&&s.incline==="none")),
+    specRow("Amortyzacja", s.cushioning, ""),
+    specRow("Nośność", s.max_user_kg, " kg", SPEC_TIP.kg, s.max_user_kg!=null&&s.max_user_kg<n.kg),
+    specRow("Masa", s.weight_kg, " kg", SPEC_TIP.weight),
+    specRow("Składanie", foldTxt, "", SPEC_TIP.fold, ans.store==="bed"&&ev.fc&&ev.fc!=="flat"),
+    specRow("Po złożeniu", s.folded_l_cm!=null||s.folded_h_cm!=null?`${s.folded_l_cm??"?"} × ${s.folded_w_cm??"?"} × ${s.folded_h_cm??"?"}`:null, " cm"),
+    specRow("Hałas", s.noise_db, " dB"),
+    specRow("Gwarancja", s.warranty_y, " lat", SPEC_TIP.warr),
+    specRow("Gwarancja silnika", s.warranty_motor_y, " lat"),
+    specRow("Aplikacja", yn(s.app), ""),
+    specRow("FTMS", yn(s.ftms), "", null, ans.app==="ftms"&&s.ftms===false),
+    specRow("Kluczyk bezp.", yn(s.safety_key), "", null, s.safety_key===false),
+    specRow("Smarowanie", s.lube_port==null?null:s.lube_port?"otwór / instrukcja":"brak informacji", ""),
+  ].join("");
+  const missing = [s.motor_chp==null&&"moc ciągła", s.noise_db==null&&"hałas", s.warranty_motor_y==null&&"gwarancja silnika"].filter(Boolean);
+  const foot = [p.sku?`<span>SKU <span class="mono">${esc(p.sku)}</span></span>`:"", p.gtin13?`<span>EAN <span class="mono">${esc(p.gtin13)}</span></span>`:"", p.image_url?`<a href="${esc(p.image_url)}" target="_blank" rel="noopener">Zdjęcie u sklepu ↗</a>`:"", p.notes?`<p class="note">${esc(p.notes)}</p>`:""].join("");
+  openModal(`<div class="dlg-h"><div class="ttl"><h2>${esc(p.name)}</h2></div><button class="x" data-close="1" aria-label="Zamknij">${ICON.x}</button></div>
   <div class="dlg-b">
-    <div class="two">
-      <div class="sect">
-        <div class="hero-img">${p.image_asset?`<img src="${esc(imgUrl(p.image_asset))}" alt="${esc(p.name)}" data-fb="${esc(p.id)}">`:placeholder(p, ev.fc)}</div>
-        <h3>Zrzuty strony oferty (dowód ceny)</h3>${gallery}
-      </div>
-      <div class="sect">
-        <h3>Cena z dostawą</h3>
-        <div class="bigprice"><div class="pv">${fmt(total(p))}<small>zł</small></div><div class="pd">${deliv}${d?` · <span class="delta ${d<0?"down":"up"}">${d>0?"+":"−"}${pln(Math.abs(d))} od ost. crawla</span>`:""}</div>${om!=null?`<div class="omni">Najniższa z 30 dni: <span class="num">${pln(om)}</span> <span class="info" data-tip="${esc(SPEC_TIP.omni)}" data-tip-tap tabindex="0" role="button" aria-label="Co to jest">i</span></div>`:""}</div>
-        <div class="chart-host" data-ids="${esc(id)}"></div>
-        <div class="acts"><a class="btn pri" href="${esc(p.url)}" target="_blank" rel="noopener">Otwórz ofertę ${ICON.ext}</a><button class="btn sec" data-pin="${esc(p.id)}" aria-pressed="${isPin}">${isPin?"Usuń z ulubionych":"Dodaj do ulubionych"}</button></div>
+    <div class="dm-hero">
+      <div class="dm-img">${p.image_asset?`<img src="${esc(imgUrl(p.image_asset))}" alt="${esc(p.name)}" data-fb="${esc(p.id)}">`:placeholder(p, ev.fc)}</div>
+      <div class="dm-info">
+        <div class="eyebrow"><span class="shopn">${esc(shopName(p.shop))}</span>${p.brand?`<span aria-hidden="true">·</span><span>${esc(p.brand)}</span>`:""}${p.available===false?`<span aria-hidden="true">·</span><span class="na">niedostępna</span>`:""}</div>
+        <p class="dm-name">${esc(p.name)}</p>
+        <div class="dm-price"><div class="pv">${fmt(total(p))}<small>zł</small></div>
+          <div class="dm-pline"><span>${deliv}</span>${d?`<span class="dm-delta ${d<0?"down":"up"}">${d>0?"+":"−"}${pln(Math.abs(d))} od ost. crawla</span>`:""}</div>
+          ${om!=null?`<div class="dm-omni">Najniższa z 30 dni: <span class="num">${pln(om)}</span><span class="info" data-tip="${esc(SPEC_TIP.omni)}" data-tip-tap tabindex="0" role="button" aria-label="Co to jest">i</span></div>`:""}</div>
+        <div class="dm-acts"><a class="btn pri" href="${esc(p.url)}" target="_blank" rel="noopener">Otwórz ofertę ${ICON.ext}</a><button class="btn sec dm-fav" data-pin="${esc(p.id)}" aria-pressed="${isPin}" aria-label="${isPin?"Usuń z ulubionych":"Dodaj do ulubionych"}">${ICON.heart}Ulubione</button></div>
+        <div class="dm-verdict"><span class="dm-score${ev.fails.length?" out":""}">${ev.fails.length?"Odpada":`${ev.score}<small>/100</small>`}</span><p class="dm-why">${why}</p></div>
       </div>
     </div>
-    <section class="sect" aria-label="Dopasowanie">
-      <h3>Dopasowanie do Waszych odpowiedzi</h3>
-      <div class="scorehead"><span class="big">${ev.fails.length?`<span style="color:var(--bad)">odpada</span>`:`${ev.score}<small> / 100</small>`}</span>${ev.unknown.length?`<span class="muted">Sklep nie podał: ${ev.unknown.join(", ")}.</span>`:""}</div>
-      ${ev.fails.length?`<div class="failbox"><b>Dlaczego odpada:</b> ${ev.fails.map(f=>esc(f.t)).join("; ")}.</div>`:""}
-      <div class="brk">${brk}</div>
+    <section class="sect" aria-labelledby="dm-h-why"><h3 id="dm-h-why">Dlaczego taki wynik</h3>
+      <div class="dm-crit">${crit}</div>
+      <p class="dm-hint">Najedź na pole, żeby zobaczyć, jak liczymy.</p>
     </section>
-    <div class="two">
-      <section class="sect"><h3>Napęd i bieg</h3><div class="kv">
-        ${kv("Moc ciągła", s.motor_chp, " KM", SPEC_TIP.chp, s.motor_chp!=null&&s.motor_chp<n.chp)}${kv("Moc szczytowa", s.motor_peak_hp, " KM")}${kv("Moc podana w W", s.motor_w, " W","Waty bez słowa „ciągła” to zwykle moc szczytowa lub pobór. Nie porównuj ich z KM ciągłej.")}
-        ${kv("Max prędkość", s.max_speed_kmh, " km/h", SPEC_TIP.speed, s.max_speed_kmh!=null&&s.max_speed_kmh<n.speed)}${kv("Pas (dł × szer)", s.belt_l_cm!=null?`${s.belt_l_cm} × ${s.belt_w_cm??"?"}`:null, " cm", SPEC_TIP.belt, s.belt_l_cm!=null&&s.belt_l_cm<n.belt)}
-        ${kv("Nachylenie", s.incline==="electric"?"elektryczne"+(s.incline_max_pct?" do "+s.incline_max_pct+"%":""):s.incline==="manual"?"ręczne":s.incline==="none"?"brak":null, "", SPEC_TIP.incl)}${kv("Amortyzacja", s.cushioning, "")}
-      </div></section>
-      <section class="sect"><h3>Rama i obsługa</h3><div class="kv">
-        ${kv("Nośność", s.max_user_kg, " kg", SPEC_TIP.kg, s.max_user_kg!=null&&s.max_user_kg<n.kg)}${kv("Masa", s.weight_kg, " kg", SPEC_TIP.weight)}
-        ${kv("Złożona (dł × szer × wys)", s.folded_l_cm!=null||s.folded_h_cm!=null?`${s.folded_l_cm??"?"} × ${s.folded_w_cm??"?"} × ${s.folded_h_cm??"?"}`:null, " cm", SPEC_TIP.fold, ans.store==="bed"&&ev.fc&&ev.fc!=="flat")}${kv("Typ składania", ev.fc==="flat"?"płasko (walking-pad), wchodzi pod łóżko":ev.fc==="low"?"nisko (poręcz składana), leży na podłodze":ev.fc==="vertical"?"pionowo, stoi pod ścianą":null, "", SPEC_TIP.fold)}
-        ${kv("Hałas", s.noise_db, " dB")}${kv("Gwarancja", s.warranty_y, " lat", SPEC_TIP.warr)}${kv("Gwarancja silnik", s.warranty_motor_y, " lat")}
-        ${kv("Aplikacja", yn(s.app), "")}${kv("FTMS (Zwift/Kinomap)", yn(s.ftms), "")}${kv("Kluczyk bezp.", yn(s.safety_key), "")}${kv("Smarowanie", s.lube_port==null?null:s.lube_port?"otwór / instrukcja":"brak informacji", "","Pas trzeba smarować silikonem co 2–3 miesiące. „Bezobsługowy” w opisie to marketing.")}
-      </div>${p.notes?`<p class="notes" style="margin-top:10px">${esc(p.notes)}</p>`:""}</section>
-    </div>
-    <section class="sect"><h3>Linki i identyfikatory</h3><div class="links">
-      <a href="${esc(p.url)}" target="_blank" rel="noopener">Strona oferty ↗</a>
-      ${p.image_asset?`<a href="${esc(imgUrl(p.image_asset))}" target="_blank" rel="noopener">Zdjęcie produktu</a>`:p.image_url?`<a href="${esc(p.image_url)}" target="_blank" rel="noopener">Zdjęcie u sklepu ↗</a>`:""}
-      ${p.sku?`<span>SKU <span class="mono">${esc(p.sku)}</span></span>`:""}${p.gtin13?`<span>EAN <span class="mono">${esc(p.gtin13)}</span></span>`:""}
-    </div></section>
+    <section class="sect" aria-labelledby="dm-h-price"><h3 id="dm-h-price">Cena w czasie</h3>
+      <div class="chart-host" data-ids="${esc(id)}"></div>${gallery}
+    </section>
+    <section class="sect" aria-labelledby="dm-h-spec"><h3 id="dm-h-spec">Specyfikacja</h3>
+      ${spec?`<dl class="dm-spec">${spec}</dl>`:""}
+      ${missing.length?`<p class="muted">Sklep nie podał: ${missing.join(", ")}.</p>`:""}
+    </section>
+    ${foot?`<div class="dm-foot">${foot}</div>`:""}
   </div>`, p.name);
   if(prevScroll){ const dl=$("modal").querySelector(".dlg"); if(dl) dl.scrollTop=prevScroll; }
 }
