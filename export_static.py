@@ -22,6 +22,9 @@ def load(sub):
     return d
 
 products = load("products"); prices = load("prices"); runs = load("runs")
+archived = {pid for pid, doc in products.items() if doc.get("archived")}
+products = {pid: doc for pid, doc in products.items() if pid not in archived}
+prices = {pid: doc for pid, doc in prices.items() if pid not in archived}
 for pid, doc in products.items():
     doc.setdefault("id", pid)
 runs_list = sorted(runs.values(), key=lambda r: str(r.get("ts", "")), reverse=True)[:30]
@@ -69,5 +72,5 @@ inject = ('<script>window.__IMG_BASE="img/";</script>'
 out = head + inject + page + '</body></html>'
 open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8").write(out)
 open(os.path.join(out_dir, ".nojekyll"), "w").close()
-print(json.dumps({"products": len(products), "prices": len(prices), "runs": len(runs_list), "images_written": copied,
+print(json.dumps({"products": len(products), "archived": len(archived), "prices": len(prices), "runs": len(runs_list), "images_written": copied,
                   "images_missing": len(missing), "missing_sample": missing[:5], "html_bytes": len(out)}, ensure_ascii=False))

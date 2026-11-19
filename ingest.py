@@ -31,10 +31,13 @@ old_products = load_dir("products"); old_prices = load_dir("prices")
 for sub in ("products", "prices", "runs"):
     os.makedirs(os.path.join(out_dir, sub), exist_ok=True)
 
-new_products = 0; price_changes = 0; written = []; seen = set()
+new_products = 0; price_changes = 0; written = []; seen = set(); archived_skipped = 0
 for p in crawl["products"]:
     pid = p["id"]; seen.add(pid)
     prev = old_products.get(pid)
+    if prev and prev.get("archived"):
+        archived_skipped += 1
+        continue
     doc = {k: v for k, v in p.items() if k != "version"}
     if p.get("price") is None and prev:
         doc["price"] = prev.get("price"); doc["delivery_pln"] = prev.get("delivery_pln")
@@ -74,7 +77,8 @@ for p in crawl["products"]:
 
 missing = sorted(set(old_products) - seen)
 run_doc = dict(run); run_doc.update({"new_products": new_products, "price_changes": price_changes,
-                                     "products_seen": len(seen), "not_seen_this_run": missing})
+                                     "products_seen": len(seen), "archived_skipped": archived_skipped,
+                                     "not_seen_this_run": missing})
 json.dump(run_doc, open(os.path.join(out_dir, "runs", run_id + ".json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 written.append(f"runs/{run_id}")
 
@@ -87,4 +91,4 @@ for w in written:
     writes.append(entry)
 chunks = [writes[i:i + 50] for i in range(0, len(writes), 50)]
 json.dump(chunks, open(os.path.join(out_dir, "writes.json"), "w", encoding="utf-8"), indent=1)
-print(json.dumps({"new_products": new_products, "price_changes": price_changes, "not_seen": missing, "written": written}, ensure_ascii=False))
+print(json.dumps({"new_products": new_products, "price_changes": price_changes, "archived_skipped": archived_skipped, "not_seen": missing, "written": written}, ensure_ascii=False))
